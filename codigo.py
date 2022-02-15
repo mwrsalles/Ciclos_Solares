@@ -79,7 +79,7 @@ os anos disponíveis estão entre 1749 e 2021: ")
 (exemplo: janeiro = 1)\n*OBS.: temos somentes dados até 02/2021\nDigite sua escolha: ")
             Media_Mes_Ano(mes, ano)
             
-        elif user_input == "11":
+        elif user_input == "12":
             print("Execução finalizada.")
             programa_aberto = False
             
