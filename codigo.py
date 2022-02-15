@@ -141,7 +141,7 @@ def ColetaDadosMinMax(ano,user_input):
             if linha.startswith(ano):   
                 manchas = linha[19:24]
                 manchas.split()
-                if manchas != "-1":
+                if manchas != "   -1":
                     num_manchas.append(manchas) 
                 
         if len(manchas) == 0:
