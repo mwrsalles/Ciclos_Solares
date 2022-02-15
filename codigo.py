@@ -19,8 +19,6 @@ Created on Sat Feb  5 17:29:12 2022
 #11 nao sei se entendi essa 
 #12 ok
 
-#posso tentar juntar a 1 e 2 com a 8 e a 9 
-
 def main_function():
     programa_aberto = True
     print("\nBem-vindo(a) ao programa sobre manchas solares. O que gostaria de saber?")
@@ -50,14 +48,14 @@ os anos disponíveis estão entre 1818 e 2018: ")
             periodo = input("Digite o período desejado para análise no formato MM/AAAA \
 (exemplo: 01/1928 a 11/1929): ")
             periodo.split()
-            #Media_Manchas(periodo, user_input)
+            Media_Manchas(periodo, user_input)
             
         elif user_input == "4":
             print("\nOs dados disponíveis vão de 01/1749 a 02/2021\n")
             periodo = input("Digite o período desejado para análise no formato MM/AAAA \
 (exemplo: 10/1928 a 11/1929): ")
             periodo.split()
-            #Media_Manchas(periodo, user_input)
+            Media_Manchas(periodo, user_input)
             
         elif user_input == "5":
             ano = input("Por favor, digite o ano desejado no formato XXXX, \
@@ -80,7 +78,7 @@ os anos disponíveis estão entre 1749 e 2021: ")
             Media_Mes_Ano(mes, ano)
             
         elif user_input == "12":
-            print("Execução finalizada.")
+            print("Execução finalizada. Obrigada por utilizar o programa :)")
             programa_aberto = False
             
         elif int(user_input) < 1 or int(user_input) > 6:
@@ -93,14 +91,14 @@ os anos disponíveis estão entre 1749 e 2021: ")
 def SemDados(): #caso não existam dados para certo ano ou certo período
     erro = input("Lamentamos muito, porém não há dados disponíveis.\n\
 Tecle 1 para tentar novamente com outro valor ou 2 para voltar ao menu inicial: ")
-    if erro != 1 and erro != 2:
-        while erro != 1 and erro != 2:
+    if erro != "1" and erro != "2":
+        while erro != "1" and erro != "2":
             erro = input("Valor inválido! \
 Tecle 1 para tentar outro dia ou 2 para voltar ao menu inicial: ")
-    elif erro == 1:
+    elif erro == "1":
         ano = input("Por favor, digite o ano desejado no formato XXXX: ")
         return ano
-    elif erro == 2:
+    elif erro == "2":
         print("\nO que mais gostaria de saber?")
         
         
@@ -134,7 +132,7 @@ def ColetaDadosMinMax(ano,user_input):
     if int(ano) < 1818 or int(ano) > 2018:
         SemDados()
         ano = SemDados()
-        ColetaDadosMinMax(ano,user_input)
+        ColetaDadosMinMax(ano,user_input) #erro
     else:
         num_manchas = []
         for linha in arquivo_dias: 
@@ -152,6 +150,24 @@ def ColetaDadosMinMax(ano,user_input):
     
     Min_and_Max(num_manchas,user_input, ano)
     
+    
+def Media_Manchas(periodo, user_input): #errado
+    arquivo_meses = open('SN_m_tot_V2.0.txt', 'r')
+    num_manchas = []
+    #if len(periodo) != 17:
+        #pedir pra repetir a entrada 
+    ano1 = periodo[3:]
+    mes1 = periodo[:2]
+    mes2 = periodo[10:12]
+    ano2 = periodo[13:]
+    for linha in arquivo_meses:
+        if linha.startswith(ano1):
+            if mes1 == linha[5:7]:
+                while linha[:4] != ano2 and int(linha[5:7]) != (int(mes2)+1):
+                    media = linha[18:23]
+                    media.split()
+                    num_manchas.append(media)
+    Min_and_Max(num_manchas, user_input, 0)
            
     
 def NenhumaMancha(mes, ano):
@@ -165,11 +181,11 @@ def NenhumaMancha(mes, ano):
             NenhumaMancha(mes, ano)
     elif int(mes) not in range(1, 13):
         while int(mes) not in range(1,13):
-            mes = input("Entrada inválida.OBS.: temos somentes dados até 10/2018\n \
-Por favor, digite o número relatvio ao mês desejado \
+            mes = input("Entrada inválida. OBS.: temos somentes dados até 10/2018\n\
+Por favor, digite o número relativo ao mês desejado \
 (exemplo: janeiro = 1): ")
             ano = input("Por favor, redigite o ano desejado no formato XXXX, \
-os anos disponíveis estão entre 1818 e 2018: ")
+os anos disponíveis estão entre 1818 e 2018: ") 
         NenhumaMancha(mes, ano)    
         
     else:
@@ -228,8 +244,8 @@ def Mais_Manchas():
             mes.split()
             data = mes+"/"+ano
         
-    print("\nO maior número de manchas observado entre 1749 e fevereiro de 2021 \
-foi em", data)
+    print("\nA data em que foi observado o maior número de manchas solares \
+entre 1749 e fevereiro de 2021 foi em", data)
 
 
 main_function()
