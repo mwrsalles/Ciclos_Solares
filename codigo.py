@@ -93,8 +93,8 @@ os anos disponíveis estão entre 1749 e 2021: ")
 def SemDados(): #caso não existam dados para certo ano ou certo período
     erro = input("Lamentamos muito, porém não há dados disponíveis.\n\
 Tecle 1 para tentar novamente com outro valor ou 2 para voltar ao menu inicial: ")
-    if erro != 1 or erro != 2:
-        while erro != 1 or erro != 2:
+    if erro != 1 and erro != 2:
+        while erro != 1 and erro != 2:
             erro = input("Valor inválido! \
 Tecle 1 para tentar outro dia ou 2 para voltar ao menu inicial: ")
     elif erro == 1:
