@@ -50,14 +50,14 @@ os anos disponíveis estão entre 1818 e 2018: ")
             periodo = input("Digite o período desejado para análise no formato MM/AAAA \
 (exemplo: 01/1928 a 11/1929): ")
             periodo.split()
-            Media_Manchas(periodo, user_input)
+            #Media_Manchas(periodo, user_input)
             
         elif user_input == "4":
             print("\nOs dados disponíveis vão de 01/1749 a 02/2021\n")
             periodo = input("Digite o período desejado para análise no formato MM/AAAA \
 (exemplo: 10/1928 a 11/1929): ")
             periodo.split()
-            Media_Manchas(periodo, user_input)
+            #Media_Manchas(periodo, user_input)
             
         elif user_input == "5":
             ano = input("Por favor, digite o ano desejado no formato XXXX, \
@@ -152,24 +152,6 @@ def ColetaDadosMinMax(ano,user_input):
     
     Min_and_Max(num_manchas,user_input, ano)
     
-    
-def Media_Manchas(periodo, user_input): #errado
-    arquivo_meses = open('SN_m_tot_V2.0.txt', 'r')
-    num_manchas = []
-    #if len(periodo) != 17:
-        #pedir pra repetir a entrada 
-    ano1 = periodo[3:]
-    mes1 = periodo[:2]
-    mes2 = periodo[10:12]
-    ano2 = periodo[13:]
-    for linha in arquivo_meses:
-        if linha.startswith(ano1):
-            if mes1 == linha[5:7]:
-                while linha[:4] != ano2 and int(linha[5:7]) != (int(mes2)+1):
-                    media = linha[18:23]
-                    media.split()
-                    num_manchas.append(media)
-    Min_and_Max(num_manchas, user_input, 0)
            
     
 def NenhumaMancha(mes, ano):
